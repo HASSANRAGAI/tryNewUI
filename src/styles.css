@@ -12,3 +12,48 @@ body {
   font-family: Arial, sans-serif;
 }
 
+/* AG-Grid custom styling */
+.ag-theme-alpine {
+  --ag-background-color: #fff;
+  --ag-header-background-color: #fff;
+  --ag-header-foreground-color: #000; /* Black header text */
+  --ag-row-hover-color: #deecf9; /* Light blue hover */
+  --ag-selected-row-background-color: #e6e6fa; /* Pale lavender selection */
+  --ag-odd-row-background-color: #f8f8f8; /* Subtle gray alternating rows */
+}
+
+/* Sort icon styling */
+.ag-header-cell-label {
+  justify-content: space-between !important;
+}
+
+.ag-sort-indicator-icon {
+  color: #a9a9a9; /* Gray sort icons */
+}
+
+/* Ensure row backgrounds */
+.ag-row-even {
+  background-color: #fff;
+}
+
+.ag-row-odd {
+  background-color: #f8f8f8;
+}
+
+/* Hover state */
+.ag-row-hover {
+  background-color: #deecf9 !important; /* Light blue */
+}
+
+/* Selection state */
+.ag-row-selected {
+  background-color: #e6e6fa !important; /* Pale lavender */
+}
+
+/* Active page number styling */
+.ag-paging-button.ag-paging-button-active {
+  background-color: #007bff; /* Blue for active page */
+  color: white;
+  border-radius: 3px;
+}
+

@@ -7,10 +7,11 @@
   margin-bottom: 20px;
   padding: 10px 0;
   font-size: 14px;
+  color: #808080; /* Gray breadcrumb as required */
 }
 
 .breadcrumb a {
-  color: #0066cc;
+  color: #808080; /* Gray links */
   text-decoration: none;
 }
 
@@ -20,10 +21,10 @@
 
 .breadcrumb .separator {
   margin: 0 8px;
-  color: #666;
+  color: #808080; /* Gray separator */
 }
 
 .breadcrumb .current {
-  color: #333;
+  color: #808080; /* Gray current page */
   font-weight: 500;
 }

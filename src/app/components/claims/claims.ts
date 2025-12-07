@@ -18,7 +18,6 @@ interface ClaimData {
   osAmt: string;
   pendingAt: string;
   processor: string;
-  highlight?: boolean;
 }
 
 @Component({
@@ -34,16 +33,16 @@ export class Claims {
   // Column definitions with filter and sort enabled
   columnDefs: ColDef[] = [
     { field: 'claimNo', headerName: 'Claim No.', filter: true, sortable: true, width: 200 },
-    { field: 'refNo', headerName: 'Ref No.', filter: true, sortable: true, width: 150 },
+    { field: 'refNo', headerName: 'Reference No.', filter: true, sortable: true, width: 180 },
     { field: 'insuredUser', headerName: 'Insured User', filter: true, sortable: true, width: 220 },
-    { field: 'intimDate', headerName: 'Intim Date', filter: true, sortable: true, width: 170 },
-    { field: 'intimUser', headerName: 'Intim User', filter: true, sortable: true, width: 150 },
-    { field: 'docCompDate', headerName: 'Doc Comp Date', filter: true, sortable: true, width: 170 },
-    { field: 'maxPayDate', headerName: 'Max Pay Date', filter: true, sortable: true, width: 170 },
+    { field: 'intimDate', headerName: 'Intimation Date', filter: true, sortable: true, width: 180 },
+    { field: 'intimUser', headerName: 'Intimation User', filter: true, sortable: true, width: 160 },
+    { field: 'docCompDate', headerName: 'Doc Comp. Date', filter: true, sortable: true, width: 170 },
+    { field: 'maxPayDate', headerName: 'Max Payment Date', filter: true, sortable: true, width: 180 },
     { field: 'lossDate', headerName: 'Loss Date', filter: true, sortable: true, width: 150 },
-    { field: 'osAmt', headerName: 'OS Amt', filter: true, sortable: true, width: 120 },
+    { field: 'osAmt', headerName: 'OS Amt.', filter: true, sortable: true, width: 130 },
     { field: 'pendingAt', headerName: 'Pending At', filter: true, sortable: true, width: 150 },
-    { field: 'processor', headerName: 'Processor', filter: true, sortable: true, width: 150 },
+    { field: 'processor', headerName: 'Processor Us.', filter: true, sortable: true, width: 150 },
   ];
 
   // Default column definitions
@@ -54,8 +53,8 @@ export class Claims {
   };
 
   // Pagination settings
-  paginationPageSize = 9; // 9 items per page to get 4 pages from 36 items
-  paginationPageSizeSelector = [9, 18, 36];
+  paginationPageSize = 10; // 10 items per page (36 items = 3.6 pages, rounded up to 4 pages)
+  paginationPageSizeSelector = [10, 20, 30];
 
   // Sample data - 36 items
   rowData: ClaimData[] = [
@@ -70,8 +69,7 @@ export class Claims {
       lossDate: '25/11/2025',
       osAmt: 'SAR 0.00',
       pendingAt: 'Dept A',
-      processor: 'Processor 1',
-      highlight: true
+      processor: 'Processor 1'
     },
     {
       claimNo: 'GC/210/502/2025/17435',
@@ -84,13 +82,12 @@ export class Claims {
       lossDate: '24/11/2025',
       osAmt: 'SAR 1,500.00',
       pendingAt: 'Dept B',
-      processor: 'Processor 2',
-      highlight: false
+      processor: 'Processor 2'
     },
     {
       claimNo: 'GC/210/502/2025/17436',
       refNo: 'REF003',
-      insuredUser: 'Sarah Johnson',
+      insuredUser: 'HESSAN Al-Rahman',
       intimDate: '24/11/2025 09:15',
       intimUser: 'User003',
       docCompDate: '25/11/2025',
@@ -98,8 +95,7 @@ export class Claims {
       lossDate: '23/11/2025',
       osAmt: 'SAR 2,300.00',
       pendingAt: 'Dept C',
-      processor: 'Processor 3',
-      highlight: true
+      processor: 'Processor 3'
     },
     {
       claimNo: 'GC/210/502/2025/17437',
@@ -112,13 +108,12 @@ export class Claims {
       lossDate: '22/11/2025',
       osAmt: 'SAR 0.00',
       pendingAt: 'Dept A',
-      processor: 'Processor 1',
-      highlight: false
+      processor: 'Processor 1'
     },
     {
       claimNo: 'GC/210/502/2025/17438',
       refNo: 'REF005',
-      insuredUser: 'Emily Chen',
+      insuredUser: 'Dr. HESSAN Ibrahim',
       intimDate: '22/11/2025 11:30',
       intimUser: 'User005',
       docCompDate: '23/11/2025',
@@ -126,8 +121,7 @@ export class Claims {
       lossDate: '21/11/2025',
       osAmt: 'SAR 5,000.00',
       pendingAt: 'Dept D',
-      processor: 'Processor 4',
-      highlight: true
+      processor: 'Processor 4'
     },
     {
       claimNo: 'GC/210/502/2025/17439',
@@ -140,13 +134,12 @@ export class Claims {
       lossDate: '20/11/2025',
       osAmt: 'SAR 0.00',
       pendingAt: 'Dept B',
-      processor: 'Processor 2',
-      highlight: false
+      processor: 'Processor 2'
     },
     {
       claimNo: 'GC/210/502/2025/17440',
       refNo: 'REF007',
-      insuredUser: 'Robert Smith',
+      insuredUser: 'HESSAN Mohammed',
       intimDate: '20/11/2025 13:22',
       intimUser: 'User007',
       docCompDate: '21/11/2025',
@@ -154,8 +147,7 @@ export class Claims {
       lossDate: '19/11/2025',
       osAmt: 'SAR 3,750.00',
       pendingAt: 'Dept C',
-      processor: 'Processor 3',
-      highlight: true
+      processor: 'Processor 3'
     },
     {
       claimNo: 'GC/210/502/2025/17441',
@@ -168,8 +160,7 @@ export class Claims {
       lossDate: '18/11/2025',
       osAmt: 'SAR 0.00',
       pendingAt: 'Dept A',
-      processor: 'Processor 1',
-      highlight: false
+      processor: 'Processor 1'
     },
     {
       claimNo: 'GC/210/502/2025/17442',
@@ -182,8 +173,7 @@ export class Claims {
       lossDate: '17/11/2025',
       osAmt: 'SAR 1,200.00',
       pendingAt: 'Dept D',
-      processor: 'Processor 4',
-      highlight: true
+      processor: 'Processor 4'
     },
     {
       claimNo: 'GC/210/502/2025/17443',
@@ -196,8 +186,7 @@ export class Claims {
       lossDate: '16/11/2025',
       osAmt: 'SAR 0.00',
       pendingAt: 'Dept B',
-      processor: 'Processor 2',
-      highlight: false
+      processor: 'Processor 2'
     },
     {
       claimNo: 'GC/210/502/2025/17444',
@@ -210,8 +199,7 @@ export class Claims {
       lossDate: '15/11/2025',
       osAmt: 'SAR 4,500.00',
       pendingAt: 'Dept C',
-      processor: 'Processor 3',
-      highlight: true
+      processor: 'Processor 3'
     },
     {
       claimNo: 'GC/210/502/2025/17445',
@@ -224,8 +212,7 @@ export class Claims {
       lossDate: '14/11/2025',
       osAmt: 'SAR 0.00',
       pendingAt: 'Dept A',
-      processor: 'Processor 1',
-      highlight: false
+      processor: 'Processor 1'
     },
     {
       claimNo: 'GC/210/502/2025/17446',
@@ -238,8 +225,7 @@ export class Claims {
       lossDate: '13/11/2025',
       osAmt: 'SAR 2,800.00',
       pendingAt: 'Dept D',
-      processor: 'Processor 4',
-      highlight: true
+      processor: 'Processor 4'
     },
     {
       claimNo: 'GC/210/502/2025/17447',
@@ -252,8 +238,7 @@ export class Claims {
       lossDate: '12/11/2025',
       osAmt: 'SAR 0.00',
       pendingAt: 'Dept B',
-      processor: 'Processor 2',
-      highlight: false
+      processor: 'Processor 2'
     },
     {
       claimNo: 'GC/210/502/2025/17448',
@@ -266,8 +251,7 @@ export class Claims {
       lossDate: '11/11/2025',
       osAmt: 'SAR 6,200.00',
       pendingAt: 'Dept C',
-      processor: 'Processor 3',
-      highlight: true
+      processor: 'Processor 3'
     },
     {
       claimNo: 'GC/210/502/2025/17449',
@@ -280,8 +264,7 @@ export class Claims {
       lossDate: '10/11/2025',
       osAmt: 'SAR 0.00',
       pendingAt: 'Dept A',
-      processor: 'Processor 1',
-      highlight: false
+      processor: 'Processor 1'
     },
     {
       claimNo: 'GC/210/502/2025/17450',
@@ -294,8 +277,7 @@ export class Claims {
       lossDate: '09/11/2025',
       osAmt: 'SAR 3,400.00',
       pendingAt: 'Dept D',
-      processor: 'Processor 4',
-      highlight: true
+      processor: 'Processor 4'
     },
     {
       claimNo: 'GC/210/502/2025/17451',
@@ -308,8 +290,7 @@ export class Claims {
       lossDate: '08/11/2025',
       osAmt: 'SAR 0.00',
       pendingAt: 'Dept B',
-      processor: 'Processor 2',
-      highlight: false
+      processor: 'Processor 2'
     },
     {
       claimNo: 'GC/210/502/2025/17452',
@@ -322,8 +303,7 @@ export class Claims {
       lossDate: '07/11/2025',
       osAmt: 'SAR 5,600.00',
       pendingAt: 'Dept C',
-      processor: 'Processor 3',
-      highlight: true
+      processor: 'Processor 3'
     },
     {
       claimNo: 'GC/210/502/2025/17453',
@@ -336,8 +316,7 @@ export class Claims {
       lossDate: '06/11/2025',
       osAmt: 'SAR 0.00',
       pendingAt: 'Dept A',
-      processor: 'Processor 1',
-      highlight: false
+      processor: 'Processor 1'
     },
     {
       claimNo: 'GC/210/502/2025/17454',
@@ -350,8 +329,7 @@ export class Claims {
       lossDate: '05/11/2025',
       osAmt: 'SAR 2,100.00',
       pendingAt: 'Dept D',
-      processor: 'Processor 4',
-      highlight: true
+      processor: 'Processor 4'
     },
     {
       claimNo: 'GC/210/502/2025/17455',
@@ -364,8 +342,7 @@ export class Claims {
       lossDate: '04/11/2025',
       osAmt: 'SAR 0.00',
       pendingAt: 'Dept B',
-      processor: 'Processor 2',
-      highlight: false
+      processor: 'Processor 2'
     },
     {
       claimNo: 'GC/210/502/2025/17456',
@@ -378,8 +355,7 @@ export class Claims {
       lossDate: '03/11/2025',
       osAmt: 'SAR 4,900.00',
       pendingAt: 'Dept C',
-      processor: 'Processor 3',
-      highlight: true
+      processor: 'Processor 3'
     },
     {
       claimNo: 'GC/210/502/2025/17457',
@@ -392,8 +368,7 @@ export class Claims {
       lossDate: '02/11/2025',
       osAmt: 'SAR 0.00',
       pendingAt: 'Dept A',
-      processor: 'Processor 1',
-      highlight: false
+      processor: 'Processor 1'
     },
     {
       claimNo: 'GC/210/502/2025/17458',
@@ -406,8 +381,7 @@ export class Claims {
       lossDate: '01/11/2025',
       osAmt: 'SAR 3,300.00',
       pendingAt: 'Dept D',
-      processor: 'Processor 4',
-      highlight: true
+      processor: 'Processor 4'
     },
     {
       claimNo: 'GC/210/502/2025/17459',
@@ -420,8 +394,7 @@ export class Claims {
       lossDate: '31/10/2025',
       osAmt: 'SAR 0.00',
       pendingAt: 'Dept B',
-      processor: 'Processor 2',
-      highlight: false
+      processor: 'Processor 2'
     },
     {
       claimNo: 'GC/210/502/2025/17460',
@@ -434,8 +407,7 @@ export class Claims {
       lossDate: '30/10/2025',
       osAmt: 'SAR 7,500.00',
       pendingAt: 'Dept C',
-      processor: 'Processor 3',
-      highlight: true
+      processor: 'Processor 3'
     },
     {
       claimNo: 'GC/210/502/2025/17461',
@@ -448,8 +420,7 @@ export class Claims {
       lossDate: '29/10/2025',
       osAmt: 'SAR 0.00',
       pendingAt: 'Dept A',
-      processor: 'Processor 1',
-      highlight: false
+      processor: 'Processor 1'
     },
     {
       claimNo: 'GC/210/502/2025/17462',
@@ -462,8 +433,7 @@ export class Claims {
       lossDate: '28/10/2025',
       osAmt: 'SAR 2,700.00',
       pendingAt: 'Dept D',
-      processor: 'Processor 4',
-      highlight: true
+      processor: 'Processor 4'
     },
     {
       claimNo: 'GC/210/502/2025/17463',
@@ -476,8 +446,7 @@ export class Claims {
       lossDate: '27/10/2025',
       osAmt: 'SAR 0.00',
       pendingAt: 'Dept B',
-      processor: 'Processor 2',
-      highlight: false
+      processor: 'Processor 2'
     },
     {
       claimNo: 'GC/210/502/2025/17464',
@@ -490,8 +459,7 @@ export class Claims {
       lossDate: '26/10/2025',
       osAmt: 'SAR 5,400.00',
       pendingAt: 'Dept C',
-      processor: 'Processor 3',
-      highlight: true
+      processor: 'Processor 3'
     },
     {
       claimNo: 'GC/210/502/2025/17465',
@@ -504,8 +472,7 @@ export class Claims {
       lossDate: '25/10/2025',
       osAmt: 'SAR 0.00',
       pendingAt: 'Dept A',
-      processor: 'Processor 1',
-      highlight: false
+      processor: 'Processor 1'
     },
     {
       claimNo: 'GC/210/502/2025/17466',
@@ -518,8 +485,7 @@ export class Claims {
       lossDate: '24/10/2025',
       osAmt: 'SAR 3,900.00',
       pendingAt: 'Dept D',
-      processor: 'Processor 4',
-      highlight: true
+      processor: 'Processor 4'
     },
     {
       claimNo: 'GC/210/502/2025/17467',
@@ -532,8 +498,7 @@ export class Claims {
       lossDate: '23/10/2025',
       osAmt: 'SAR 0.00',
       pendingAt: 'Dept B',
-      processor: 'Processor 2',
-      highlight: false
+      processor: 'Processor 2'
     },
     {
       claimNo: 'GC/210/502/2025/17468',
@@ -546,8 +511,7 @@ export class Claims {
       lossDate: '22/10/2025',
       osAmt: 'SAR 6,800.00',
       pendingAt: 'Dept C',
-      processor: 'Processor 3',
-      highlight: true
+      processor: 'Processor 3'
     },
     {
       claimNo: 'GC/210/502/2025/17469',
@@ -560,8 +524,7 @@ export class Claims {
       lossDate: '21/10/2025',
       osAmt: 'SAR 0.00',
       pendingAt: 'Dept A',
-      processor: 'Processor 1',
-      highlight: false
+      processor: 'Processor 1'
     }
   ];
 
@@ -570,8 +533,9 @@ export class Claims {
   }
 
   getRowStyle = (params: any) => {
-    if (params.data.highlight) {
-      return { background: '#FFE5CC' }; // Orange highlight
+    // Highlight rows where Insured User contains 'HESSAN'
+    if (params.data.insuredUser && params.data.insuredUser.toUpperCase().includes('HESSAN')) {
+      return { background: '#ffdab9' }; // Orange (peachpuff) for HESSAN
     }
     return undefined;
   };
