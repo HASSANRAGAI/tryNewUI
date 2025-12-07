@@ -34,16 +34,16 @@ export class Claims {
   // Column definitions with filter and sort enabled
   columnDefs: ColDef[] = [
     { field: 'claimNo', headerName: 'Claim No.', filter: true, sortable: true, width: 200 },
-    { field: 'refNo', headerName: 'Ref No.', filter: true, sortable: true, width: 150 },
+    { field: 'refNo', headerName: 'Reference No.', filter: true, sortable: true, width: 180 },
     { field: 'insuredUser', headerName: 'Insured User', filter: true, sortable: true, width: 220 },
-    { field: 'intimDate', headerName: 'Intim Date', filter: true, sortable: true, width: 170 },
-    { field: 'intimUser', headerName: 'Intim User', filter: true, sortable: true, width: 150 },
-    { field: 'docCompDate', headerName: 'Doc Comp Date', filter: true, sortable: true, width: 170 },
-    { field: 'maxPayDate', headerName: 'Max Pay Date', filter: true, sortable: true, width: 170 },
+    { field: 'intimDate', headerName: 'Intimation Date', filter: true, sortable: true, width: 180 },
+    { field: 'intimUser', headerName: 'Intimation User', filter: true, sortable: true, width: 160 },
+    { field: 'docCompDate', headerName: 'Doc Comp. Date', filter: true, sortable: true, width: 170 },
+    { field: 'maxPayDate', headerName: 'Max Payment Date', filter: true, sortable: true, width: 180 },
     { field: 'lossDate', headerName: 'Loss Date', filter: true, sortable: true, width: 150 },
-    { field: 'osAmt', headerName: 'OS Amt', filter: true, sortable: true, width: 120 },
+    { field: 'osAmt', headerName: 'OS Amt.', filter: true, sortable: true, width: 130 },
     { field: 'pendingAt', headerName: 'Pending At', filter: true, sortable: true, width: 150 },
-    { field: 'processor', headerName: 'Processor', filter: true, sortable: true, width: 150 },
+    { field: 'processor', headerName: 'Processor Us.', filter: true, sortable: true, width: 150 },
   ];
 
   // Default column definitions
@@ -54,8 +54,8 @@ export class Claims {
   };
 
   // Pagination settings
-  paginationPageSize = 9; // 9 items per page to get 4 pages from 36 items
-  paginationPageSizeSelector = [9, 18, 36];
+  paginationPageSize = 10; // 10 items per page to get 4 pages from 36 items (rounded up)
+  paginationPageSizeSelector = [10, 20, 30];
 
   // Sample data - 36 items
   rowData: ClaimData[] = [
@@ -90,7 +90,7 @@ export class Claims {
     {
       claimNo: 'GC/210/502/2025/17436',
       refNo: 'REF003',
-      insuredUser: 'Sarah Johnson',
+      insuredUser: 'HESSAN Al-Rahman',
       intimDate: '24/11/2025 09:15',
       intimUser: 'User003',
       docCompDate: '25/11/2025',
@@ -118,7 +118,7 @@ export class Claims {
     {
       claimNo: 'GC/210/502/2025/17438',
       refNo: 'REF005',
-      insuredUser: 'Emily Chen',
+      insuredUser: 'Dr. HESSAN Ibrahim',
       intimDate: '22/11/2025 11:30',
       intimUser: 'User005',
       docCompDate: '23/11/2025',
@@ -146,7 +146,7 @@ export class Claims {
     {
       claimNo: 'GC/210/502/2025/17440',
       refNo: 'REF007',
-      insuredUser: 'Robert Smith',
+      insuredUser: 'HESSAN Mohammed',
       intimDate: '20/11/2025 13:22',
       intimUser: 'User007',
       docCompDate: '21/11/2025',
@@ -570,8 +570,9 @@ export class Claims {
   }
 
   getRowStyle = (params: any) => {
-    if (params.data.highlight) {
-      return { background: '#FFE5CC' }; // Orange highlight
+    // Highlight rows where Insured User contains 'HESSAN'
+    if (params.data.insuredUser && params.data.insuredUser.toUpperCase().includes('HESSAN')) {
+      return { background: '#ffdab9' }; // Orange (peachpuff) for HESSAN
     }
     return undefined;
   };
