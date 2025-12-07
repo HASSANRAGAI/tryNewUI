@@ -1,0 +1,24 @@
+<div class="claims-container">
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb">
+    <a href="#">Dashboard</a>
+    <span class="separator">/</span>
+    <a href="#">Claims</a>
+    <span class="separator">/</span>
+    <span class="current">Claim Processing</span>
+  </nav>
+
+  <!-- AG Grid Table -->
+  <div class="ag-theme-alpine" style="height: 600px; width: 100%;">
+    <ag-grid-angular
+      [rowData]="rowData"
+      [columnDefs]="columnDefs"
+      [defaultColDef]="defaultColDef"
+      [pagination]="true"
+      [paginationPageSize]="paginationPageSize"
+      [paginationPageSizeSelector]="paginationPageSizeSelector"
+      [getRowStyle]="getRowStyle"
+      (gridReady)="onGridReady($event)"
+    />
+  </div>
+</div>
